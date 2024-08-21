@@ -19,4 +19,21 @@ Pedido.getAll = result => {
   });
 };
 
+Pedido.getItems = (pedidoId, result) => {
+  sql.query(`SELECT i.id AS id_item, i.id_pedido, i.quantidade, prod.nome, m.nome AS material, c1.nome AS cor1, c2.nome AS cor2, i.valor_unit, i.valor_unit * i.quantidade AS valor_total_item, i.observacao_item, i.layout_desenvolvido, i.layout_aprovado, i.layout_imagem_1, i.layout_imagem_2, i.layout_imagem_3 FROM pedidos_itens AS i LEFT JOIN produtos AS prod ON i.id_produto = prod.id LEFT JOIN cores AS c1 ON i.id_cor_1 = c1.id LEFT JOIN cores AS c2 ON i.id_cor_2 = c2.id LEFT JOIN materiais AS m ON i.id_material = m.id WHERE i.id_pedido = ${pedidoId}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res.length) {
+      console.log("found items: ", res);
+      result(null, res);
+      return;
+    }
+    // not found items with the order id
+    result({ kind: "not_found" }, null);
+  });
+};
+
 module.exports = Pedido;
