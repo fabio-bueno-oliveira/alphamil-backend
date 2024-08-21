@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/clientes.routes.js")(app);
+require("./app/routes/pedidos.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
