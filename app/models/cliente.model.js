@@ -2,17 +2,9 @@ const sql = require("./db.js");
 // const jwt = require("jsonwebtoken");
 
 // constructor
-const Cliente = function(project) {
-  this.name = project.name;
-  this.username = project.username;
-  this.picture = project.picture;
-  this.foundation_year = project.foundation_year;
-  this.end_year = project.end_year;
-  this.bio = project.bio;
-  this.type = project.type;
-  this.kind = project.kind;
-  this.public = project.public;
-  this.id_user_creator_fk = project.id_user_creator_fk;
+const Cliente = function(cliente) {
+  this.name = cliente.nome;
+  this.username = cliente.sobrenome;
 };
 
 Cliente.getAll = result => {
