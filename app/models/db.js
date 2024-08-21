@@ -11,11 +11,4 @@ var connection = mysql.createPool({
   database: dbConfig.DB
 });
 
-// var connection = mysql.createConnection({
-//   host: dbConfig.HOST,
-//   port: '2083',
-//   user: dbConfig.USER,
-//   password: dbConfig.PASSWORD
-// });
-
 module.exports = connection;
