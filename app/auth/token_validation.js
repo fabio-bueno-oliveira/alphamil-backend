@@ -9,10 +9,10 @@ module.exports = {
         if (err) {
           // return res.json({
           //   success: 0,
-          //   message: "Invalid Token..."
+          //   message: "Token inválido"
           // });
           return res.status(401).send({
-            message: 'Invalid Token!'
+            message: 'Token inválido'
           });
         } else {
           req.decoded = decoded;
@@ -22,7 +22,7 @@ module.exports = {
     } else {
       return res.json({
         success: 0,
-        message: "Access Denied! Unauthorized User"
+        message: "Acesso negado. Usuário não autorizado."
       });
     }
   }
