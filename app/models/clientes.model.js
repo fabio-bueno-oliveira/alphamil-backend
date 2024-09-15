@@ -31,7 +31,7 @@ Cliente.create = (newClient, result) => {
 };
 
 Cliente.findById = (idCliente, result) => {
-  sql.query(`SELECT * FROM clientes WHERE id = ${idCliente}`, (err, res) => {
+  sql.query(`SELECT c.id, c.nome, c.endereco, c.endereco_numero, c.endereco_bairro, c.endereco_complemento, cidade.nome AS endereco_cidade, estado.nome AS endereco_estado, c.endereco_cep, c.cliente_desde_ano, c.observacoes, c.cadastro_sistema FROM clientes as c LEFT JOIN cidade ON c.endereco_cidade = cidade.id LEFT JOIN estado ON c.endereco_uf = estado.id WHERE c.id = ${idCliente}`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
